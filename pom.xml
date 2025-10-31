@@ -38,8 +38,14 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Другие возможные зависимости, например, для логирования или графов -->
-        <!-- Пример для библиотеки логирования SLF4J -->
+        <!-- Зависимость для работы с JSON -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
+
+        <!-- Зависимость для логирования (SLF4J) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -51,7 +57,6 @@
             <version>1.7.30</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <!-- Плагины для сборки и тестирования -->
