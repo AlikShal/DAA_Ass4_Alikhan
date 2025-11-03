@@ -126,37 +126,36 @@ Large_3.json (40 vertices, 39 edges) is densest - peak runtime 148k ns.
 * The system correctly detects cycles - zeroed-out DAG metrics indicate cyclic input handling works perfectly.
 
 
-
 ## **7. Conclusions**
 
-### **When to Use Each Algorithm**
+### **Algorithm Applications**
 
-**Tarjan’s SCC algorithm** detects cycles in directed graphs and condenses them into single components, transforming cyclic graphs into DAGs. It is best for **dependency analysis** and handling **cyclic structures**.
+**Tarjan’s SCC algorithm** locates cycles in directed graphs and merges them into single strongly connected components, simplifying complex networks into acyclic structures. It is particularly useful for **dependency tracking**, **cycle detection**, and **analyzing interconnected systems**.
 
-**Kahn’s Topological Sort** finds a valid **execution order** of tasks in a DAG, making it ideal for **task scheduling**, **build systems**, and **dependency resolution**.
+**Kahn’s Topological Sort** arranges the nodes of a DAG in a valid **execution sequence**, ensuring all dependencies are respected. It’s most effective for **task planning**, **workflow automation**, and **software build pipelines**, where processes must follow strict ordering.
 
-**DAG Shortest Path** computes the **minimum total time or cost** in an acyclic workflow, useful for **optimization** and finding the fastest execution sequence.
+**DAG Shortest Path** identifies the **fastest or least costly path** through an acyclic graph, helping to **optimize workflows** and **minimize total processing time** in systems with ordered dependencies.
 
-**DAG Longest Path** identifies the **critical path** — the maximum duration chain of dependent tasks — essential for **project planning** and **bottleneck analysis**.
-
-
-### **Practical Insights**
-
-* **Tarjan SCC** remains the most time-intensive stage but linear and scalable.
-* **Kahn TopoSort** and **DAG-SP** add negligible overhead once DAG is formed.
-* Graph **condensation** significantly reduces complexity for later stages.
-* **Critical path time** grows with density, matching real-world dependency behavior.
+**DAG Longest Path** determines the **critical chain of operations** — the maximum-duration sequence of dependent tasks that dictates project completion time. It’s widely applied in **project scheduling**, **bottleneck detection**, and **performance forecasting**.
 
 
-### **Overall Conclusion**
+### **Key Insights**
 
-This project demonstrates that the **SCC, TopoSort, and DAG Paths** pipeline forms an efficient framework for analyzing directed, weighted dependency graphs.
-Even for dense cyclic inputs, the approach scales **linearly (O(V + E))**, producing accurate performance metrics and clear critical-path insights.
+* **Tarjan SCC** requires the most processing due to recursive DFS, but remains efficient with linear complexity even on large graphs.
+* **Kahn’s Topological Sort** and **DAG path computations** introduce minimal additional cost once the graph is reduced to a DAG.
+* **Condensing strongly connected components** dramatically simplifies further analysis and improves performance.
+* The **critical path duration** naturally expands with graph density, reflecting real-world dependency growth in complex systems.
 
-The methodology proves both **theoretically optimal** and **practically robust**, confirming its suitability for:
 
-* Task scheduling
-* Workflow optimization
-* Dependency resolution
-* Critical path analysis
+### **Final Thoughts**
+
+The integrated workflow of **SCC detection**, **Topological Sorting**, and **DAG path analysis** proves to be a **powerful, scalable approach** for evaluating directed weighted graphs.
+Even under heavy graph density, the framework operates in **linear time (O(V + E))**, producing reliable metrics and meaningful structural insights.
+
+This methodology demonstrates both **practical efficiency** and **theoretical soundness**, making it highly applicable to:
+
+* **Workflow scheduling and coordination**
+* **Optimization of dependency-driven systems**
+* **Automated build and task sequencing**
+* **Critical path and performance analysis**
 
