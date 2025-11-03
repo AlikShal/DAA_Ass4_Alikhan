@@ -10,10 +10,8 @@ public class DagShortestPaths {
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[source] = 0;
 
-        // Топологическая сортировка графа
         List<Integer> topoOrder = topologicalSort(graph);
 
-        // Проходим по вершинам в топологическом порядке
         for (int u : topoOrder) {
             if (dist[u] != Integer.MAX_VALUE) {
                 for (int v : graph.get(u)) {
